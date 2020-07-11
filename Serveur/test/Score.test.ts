@@ -6,8 +6,46 @@
 // Set de 11 points : Si score à 10-10, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 15.
 
 // Set de 21 points : Si score à 20-20, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 30.
-describe('test bidon',() => {
-    it('test toto', () => {
-        expect(1+1).toEqual(2);
+import { Score } from "../Score/Score"
+
+describe('Scoring',() => {
+    describe('valide un set de 11 points', () => {
+        it('11-09 est valide', () => {
+            let scoreAValider = new Score(11, 9);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('09-11 est valide', () => {
+            let scoreAValider = new Score(9, 11);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('10-10 n\'est pas valide', () => {
+            let scoreAValider = new Score(10, 10);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+        it('12-10 est valide', () => {
+            let scoreAValider = new Score(12, 10);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('09-10 n\'est pas valide', () => {
+            let scoreAValider = new Score(9, 10);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+        it('13-11 est valide', () => {
+            let scoreAValider = new Score(13, 11);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('15-14 est valide', () => {
+            let scoreAValider = new Score(15, 14);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('15-15 n\'est pas valide', () => {
+            let scoreAValider = new Score(15, 15);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+        it('16-14 n\'est pas valide', () => {
+            let scoreAValider = new Score(16, 14);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
     })
+    
 });
