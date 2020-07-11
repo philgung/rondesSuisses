@@ -9,7 +9,7 @@ export class ScoreUnSetDe11 implements IScore {
     }
 }
 
-export class SetDe11Points{
+class SetDe11Points{
     estValide(): boolean {
         if (this.valeurA >= 10 && this.valeurB >= 10) {
             if (this.valeurA > 15 || this.valeurB >= 15) {

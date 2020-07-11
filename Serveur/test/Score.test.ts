@@ -5,6 +5,7 @@
 
 // Set de 21 points : Si score à 20-20, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 30.
 import { ScoreUnSetDe11 } from "../Score/ScoreUnSetDe11";
+import { ScoreUnSetDe21 } from "../Score/ScoreUnSetDe21";
 
 describe('Scoring',() => {
     describe('valide un set de 11 points', () => {
@@ -46,7 +47,14 @@ describe('Scoring',() => {
         })
     })
     describe('valide un set de 21 points', () => {
-        
+        it('21-11 est valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(21, 11);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('11-21 est valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(11, 21);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
     })
     
 });
