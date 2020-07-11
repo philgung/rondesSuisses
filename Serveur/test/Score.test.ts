@@ -3,49 +3,50 @@
 // 2 sets gagnants de 11 points
 // 2 sets gagnants de 21 points
 
-// Set de 11 points : Si score à 10-10, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 15.
-
 // Set de 21 points : Si score à 20-20, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 30.
-import { Score } from "../Score/Score"
+import { ScoreUnSetDe11 } from "../Score/ScoreUnSetDe11";
 
 describe('Scoring',() => {
     describe('valide un set de 11 points', () => {
         it('11-09 est valide', () => {
-            let scoreAValider = new Score(11, 9);
+            let scoreAValider = new ScoreUnSetDe11(11, 9);
             expect(scoreAValider.estValide()).toBe(true)
         })
         it('09-11 est valide', () => {
-            let scoreAValider = new Score(9, 11);
+            let scoreAValider = new ScoreUnSetDe11(9, 11);
             expect(scoreAValider.estValide()).toBe(true)
         })
         it('10-10 n\'est pas valide', () => {
-            let scoreAValider = new Score(10, 10);
+            let scoreAValider = new ScoreUnSetDe11(10, 10);
             expect(scoreAValider.estValide()).toBe(false)
         })
         it('12-10 est valide', () => {
-            let scoreAValider = new Score(12, 10);
+            let scoreAValider = new ScoreUnSetDe11(12, 10);
             expect(scoreAValider.estValide()).toBe(true)
         })
         it('09-10 n\'est pas valide', () => {
-            let scoreAValider = new Score(9, 10);
+            let scoreAValider = new ScoreUnSetDe11(9, 10);
             expect(scoreAValider.estValide()).toBe(false)
         })
         it('13-11 est valide', () => {
-            let scoreAValider = new Score(13, 11);
+            let scoreAValider = new ScoreUnSetDe11(13, 11);
             expect(scoreAValider.estValide()).toBe(true)
         })
         it('15-14 est valide', () => {
-            let scoreAValider = new Score(15, 14);
+            let scoreAValider = new ScoreUnSetDe11(15, 14);
             expect(scoreAValider.estValide()).toBe(true)
         })
         it('15-15 n\'est pas valide', () => {
-            let scoreAValider = new Score(15, 15);
+            let scoreAValider = new ScoreUnSetDe11(15, 15);
             expect(scoreAValider.estValide()).toBe(false)
         })
         it('16-14 n\'est pas valide', () => {
-            let scoreAValider = new Score(16, 14);
+            let scoreAValider = new ScoreUnSetDe11(16, 14);
             expect(scoreAValider.estValide()).toBe(false)
         })
+    })
+    describe('valide un set de 21 points', () => {
+        
     })
     
 });
