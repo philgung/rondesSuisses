@@ -3,7 +3,6 @@
 // 2 sets gagnants de 11 points
 // 2 sets gagnants de 21 points
 
-// Set de 21 points : Si score à 20-20, il faut 2 points d’écarts pour gagner le set. Si aucun départage, on arrête au premier arrivé à 30.
 import { ScoreUnSetDe11 } from "../Score/ScoreUnSetDe11";
 import { ScoreUnSetDe21 } from "../Score/ScoreUnSetDe21";
 
@@ -54,6 +53,30 @@ describe('Scoring',() => {
         it('11-21 est valide', () => {
             let scoreAValider = new ScoreUnSetDe21(11, 21);
             expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('12-20 n\'est pas valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(12, 20);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+        it('22-20 est valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(22, 20);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('21-20 n\'est pas valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(21, 20);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+        it('28-30 est valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(28, 30);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('30-29 est valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(30, 29);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+        it('31-29 n\'est pas valide', () => {
+            let scoreAValider = new ScoreUnSetDe21(31, 29);
+            expect(scoreAValider.estValide()).toBe(false)
         })
     })
     
