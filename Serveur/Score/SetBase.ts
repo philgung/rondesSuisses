@@ -1,4 +1,3 @@
-
 export interface ISet{
     estValide(): boolean
 }
