@@ -10,23 +10,31 @@ export class ScoreUnSetDe11 implements IScore {
 }
 
 class SetDe11Points{
+    private readonly NombreDePointsMax = 15;
+    private readonly NombreDePointsPourGagnerUnSet = 11;
+
     estValide(): boolean {
-        if (this.valeurA >= 10 && this.valeurB >= 10) {
-            if (this.valeurA > 15 || this.valeurB >= 15) {
+        if (this.valeurA >= this.NombreDePointsPourGagnerUnSet - 1 && 
+            this.valeurB >= this.NombreDePointsPourGagnerUnSet - 1) 
+            {
+            if (this.valeurA > this.NombreDePointsMax || 
+                this.valeurB > this.NombreDePointsMax) {
                 return false;
             }
-            if (this.valeurA == 15 && this.valeurB == 15) {
+            if (this.valeurA == this.NombreDePointsMax && 
+                this.valeurB == this.NombreDePointsMax) {
                 return false;
             }
-            if (this.valeurA == 15 || this.valeurB == 15) {
+            if (this.valeurA == this.NombreDePointsMax || 
+                this.valeurB == this.NombreDePointsMax) {
                 return true;
             }
             return Math.abs(this.valeurA - this.valeurB) == 2;
         }
-        if (this.valeurA == 11)
+        if (this.valeurA == this.NombreDePointsPourGagnerUnSet || 
+            this.valeurB == this.NombreDePointsPourGagnerUnSet){
             return true;
-        if (this.valeurB == 11)
-            return true;
+        }
         return false;
     }
     readonly valeurA: number;
