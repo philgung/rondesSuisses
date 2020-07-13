@@ -5,6 +5,7 @@
 
 import { ScoreUnSetDe11 } from "../Score/ScoreUnSetDe11";
 import { ScoreUnSetDe21 } from "../Score/ScoreUnSetDe21";
+import { ScoreDeuxSetsGagnantsDe11 } from "../Score/ScoreDeuxSetsGagnantsDe11";
 
 describe('Scoring',() => {
     describe('valide un set de 11 points', () => {
@@ -79,5 +80,15 @@ describe('Scoring',() => {
             expect(scoreAValider.estValide()).toBe(false)
         })
     })
-    
+    describe('valide deux sets gagnants de 11 points', () =>{
+        it('11-09 / 11-05 est valide', () => {
+            let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 11, 5);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
+
+        // it('11-09 / 05-11 / 11-07 est valide', () => {
+        //     let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 5, 11, 11, 7);
+        //     expect(scoreAValider.estValide()).toBe(true)
+        // })
+    })
 });
