@@ -90,5 +90,10 @@ describe('Scoring',() => {
             let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 5, 11, 11, 7);
             expect(scoreAValider.estValide()).toBe(true)
         })
+
+        // it('11-09 / 11-05 / 11-07 n\'est pas valide', () => {
+        //     let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 11, 5, 11, 7);
+        //     expect(scoreAValider.estValide()).toBe(false)
+        // })
     })
 });
