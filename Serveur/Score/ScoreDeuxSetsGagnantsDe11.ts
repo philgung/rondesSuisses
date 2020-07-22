@@ -16,14 +16,14 @@ export class ScoreDeuxSetsGagnantsDe11 implements IScore{
             this.set3 = new SetDe11Points({valeurA:set3A, valeurB:set3B});
         }
     }
-    estValide(): boolean {
+
+    public estValide(): boolean {
         return this.set1.estValide() && this.set2.estValide()
             && (this.set3 == undefined ||  this.set3.estValide())
             && this.leNombreDeSetGagnantEstDe(2);
     }
 
     private leNombreDeSetGagnantEstDe(nbreSetsGagnants:number):boolean{
-
         let sets = [ this.set1, this.set2];
         if (this.set3 != undefined)
         {

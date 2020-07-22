@@ -6,12 +6,12 @@ type Set = {valeurA:number, valeurB:number}
 
 export abstract class SetBase implements ISet{
     private readonly set:Set;
+    protected abstract readonly NombreDePointsMax;
+    protected abstract readonly NombreDePointsPourGagnerUnSet;
+
     constructor(set : {valeurA: number, valeurB: number}) {
         this.set = set;
     }
-
-    protected abstract readonly NombreDePointsMax;
-    protected abstract readonly NombreDePointsPourGagnerUnSet;
 
     public estValide(): boolean {
         if (this.verifieValiditePourNombreDePointsMax())
@@ -21,7 +21,7 @@ export abstract class SetBase implements ISet{
 
         if (this.lesDeuxScoresSontAuDelaDe(this.NombreDePointsPourGagnerUnSet - 1)) {
             const differenceDePoints = Math.abs(this.resultat());            
-            return (differenceDePoints == 1 && (this.lunDesDeuxScoresEstEgaleA(this.NombreDePointsMax))) ||
+            return (differenceDePoints == 1 && this.lunDesDeuxScoresEstEgaleA(this.NombreDePointsMax)) ||
                     differenceDePoints == 2;            
         }
 

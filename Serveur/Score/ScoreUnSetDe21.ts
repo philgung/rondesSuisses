@@ -2,11 +2,13 @@ import { SetBase } from "./SetBase";
 import { IScore } from "./Score";
 
 export class ScoreUnSetDe21 implements IScore {
-    readonly set: SetDe21Points;
+    private readonly set: SetDe21Points;
+
     constructor(valeurA: number, valeurB: number) {
         this.set = new SetDe21Points({valeurA, valeurB});
     }
-    estValide(): boolean {
+    
+    public estValide(): boolean {
         return this.set.estValide();
     }
 }
