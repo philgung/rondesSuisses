@@ -23,26 +23,15 @@ export class ScoreDeuxSetsGagnantsDe11 implements IScore{
     }
 
     private leNombreDeSetGagnantEstDe(nbreSetsGagnants:number):boolean{
-        let joueurAGagneLePremierSet = this.set1.resultat() > 0;
-        let joueurAGagneLeSecondSet = this.set2.resultat() > 0;
-        let leNombreDeSetGagnant = 0;
-        if (this.set3 == undefined)
+
+        let sets = [ this.set1, this.set2];
+        if (this.set3 != undefined)
         {
-            if (joueurAGagneLePremierSet && joueurAGagneLeSecondSet ||
-                !joueurAGagneLePremierSet && !joueurAGagneLeSecondSet)
-            {
-                leNombreDeSetGagnant = 2;
-            }
+            sets.push(this.set3);
         }
-        else
-        {
-            let joueurAGagneLeTroisiemeSet = this.set3.resultat() > 0;
-            let nombreDeSetGagneParLeJoueurA = [ joueurAGagneLePremierSet, joueurAGagneLeSecondSet, joueurAGagneLeTroisiemeSet];
-            leNombreDeSetGagnant = Math.max(
-                nombreDeSetGagneParLeJoueurA.filter(element => element).length,
-                nombreDeSetGagneParLeJoueurA.filter(element => !element).length);
-        }
-        
-        return leNombreDeSetGagnant == nbreSetsGagnants;
+        const nombreDeSetGagnantDeA = sets.filter(set => set.resultat() > 0).length;
+        const nombreDeSetGagnantDeB = sets.filter(set => set.resultat() < 0).length;
+
+        return Math.max(nombreDeSetGagnantDeA, nombreDeSetGagnantDeB) == nbreSetsGagnants;
     }
 }
