@@ -13,36 +13,34 @@ export abstract class SetBase implements ISet{
     protected abstract readonly NombreDePointsMax;
     protected abstract readonly NombreDePointsPourGagnerUnSet;
     estValide(): boolean {
-        // Les deux scores au dela de 10 points
-        if (this.set.valeurA > this.NombreDePointsMax ||
-            this.set.valeurB > this.NombreDePointsMax) {
+        if (this.verifieValiditePourNombreDePointsMax())
+        {
             return false;
         }
-        
+
+        // Les deux scores au dela de 10 points
         if (this.set.valeurA >= this.NombreDePointsPourGagnerUnSet - 1 &&
             this.set.valeurB >= this.NombreDePointsPourGagnerUnSet - 1) {
-            
-            if (this.set.valeurA == this.NombreDePointsMax &&
-                this.set.valeurB == this.NombreDePointsMax) {
-                return false;
-            }
-            if (this.set.valeurA == this.NombreDePointsMax ||
-                this.set.valeurB == this.NombreDePointsMax) {
-                return true;
-            }
-            return Math.abs(this.set.valeurA - this.set.valeurB) == 2;
+            const differenceDePoints = Math.abs(this.resultat());            
+            return (differenceDePoints == 1 && 
+                        (this.set.valeurA == this.NombreDePointsMax ||
+                        this.set.valeurB == this.NombreDePointsMax)) ||
+                    differenceDePoints == 2;            
         }
-
         // En dessous ou égal à 11 points
-        if (this.set.valeurA == this.NombreDePointsPourGagnerUnSet ||
-            this.set.valeurB == this.NombreDePointsPourGagnerUnSet) {
-            return true;
-        }
-
-        return false;
+        return this.set.valeurA == this.NombreDePointsPourGagnerUnSet ||
+            this.set.valeurB == this.NombreDePointsPourGagnerUnSet;
     }
 
     resultat() : number {
         return this.set.valeurA - this.set.valeurB;
+    }
+
+    private verifieValiditePourNombreDePointsMax() : boolean{
+        return (
+            this.set.valeurA > this.NombreDePointsMax ||
+            this.set.valeurB > this.NombreDePointsMax) ||
+            (this.set.valeurA == this.NombreDePointsMax &&
+                this.set.valeurB == this.NombreDePointsMax);
     }
 }
