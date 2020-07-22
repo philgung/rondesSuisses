@@ -19,15 +19,13 @@ export abstract class SetBase implements ISet{
             return false;
         }
 
-        if (this.lesDeuxScoresSontAuDelaDuNombreDePointsPourGagnerUnSetMoinsUn()) {
+        if (this.lesDeuxScoresSontAuDelaDe(this.NombreDePointsPourGagnerUnSet - 1)) {
             const differenceDePoints = Math.abs(this.resultat());            
-            return (differenceDePoints == 1 && 
-                        (this.set.valeurA == this.NombreDePointsMax ||
-                        this.set.valeurB == this.NombreDePointsMax)) ||
+            return (differenceDePoints == 1 && (this.lunDesDeuxScoresEstEgaleA(this.NombreDePointsMax))) ||
                     differenceDePoints == 2;            
         }
 
-        return this.lunDesDeuxScoresEstEgaleAuNombreDePointsPourGagnerUnSet();
+        return this.lunDesDeuxScoresEstEgaleA(this.NombreDePointsPourGagnerUnSet);
     }
 
     public resultat() : number {
@@ -35,20 +33,22 @@ export abstract class SetBase implements ISet{
     }
 
     private verifieValiditePourNombreDePointsMax() : boolean{
-        return (
-            this.set.valeurA > this.NombreDePointsMax ||
-            this.set.valeurB > this.NombreDePointsMax) ||
-            (this.set.valeurA == this.NombreDePointsMax &&
-                this.set.valeurB == this.NombreDePointsMax);
+        return this.lunDesDeuxScoresEstSuperieurA(this.NombreDePointsMax) || this.lesDeuxScoresSontEgalesA(this.NombreDePointsMax);
     }
 
-    private lesDeuxScoresSontAuDelaDuNombreDePointsPourGagnerUnSetMoinsUn() : boolean{
-        return this.set.valeurA >= this.NombreDePointsPourGagnerUnSet - 1 &&
-        this.set.valeurB >= this.NombreDePointsPourGagnerUnSet - 1;
+    private lesDeuxScoresSontAuDelaDe(valeur : number) : boolean{
+        return this.set.valeurA >= valeur && this.set.valeurB >= valeur;
     }
 
-    private lunDesDeuxScoresEstEgaleAuNombreDePointsPourGagnerUnSet() : boolean{
-        return this.set.valeurA == this.NombreDePointsPourGagnerUnSet ||
-            this.set.valeurB == this.NombreDePointsPourGagnerUnSet;
+    private lunDesDeuxScoresEstEgaleA(valeur : number) : boolean{
+        return this.set.valeurA == valeur || this.set.valeurB == valeur;
+    }
+
+    private lesDeuxScoresSontEgalesA(valeur : number) : boolean{
+        return this.set.valeurA == valeur && this.set.valeurB == valeur;
+    }
+
+    private lunDesDeuxScoresEstSuperieurA(valeur : number) : boolean{
+        return this.set.valeurA > valeur || this.set.valeurB > valeur;
     }
 }
