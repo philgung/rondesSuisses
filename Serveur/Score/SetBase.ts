@@ -36,4 +36,8 @@ export abstract class SetBase implements ISet{
 
         return false;
     }
+
+    resultat() : number {
+        return this.set.valeurA - this.set.valeurB;
+    }
 }

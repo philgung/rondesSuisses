@@ -91,9 +91,19 @@ describe('Scoring',() => {
             expect(scoreAValider.estValide()).toBe(true)
         })
 
-        // it('11-09 / 11-05 / 11-07 n\'est pas valide', () => {
-        //     let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 11, 5, 11, 7);
-        //     expect(scoreAValider.estValide()).toBe(false)
-        // })
+        it('11-09 / 05-11 n\'est pas valide', () => {
+            let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 5, 11);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+
+        it('11-09 / 11-05 / 11-07 n\'est pas valide', () => {
+            let scoreAValider = new ScoreDeuxSetsGagnantsDe11(11, 9, 11, 5, 11, 7);
+            expect(scoreAValider.estValide()).toBe(false)
+        })
+
+        it('09-11 / 11-05 / 07-11 est valide', () => {
+            let scoreAValider = new ScoreDeuxSetsGagnantsDe11(9, 11, 11, 5, 7, 11);
+            expect(scoreAValider.estValide()).toBe(true)
+        })
     })
 });

@@ -18,6 +18,31 @@ export class ScoreDeuxSetsGagnantsDe11 implements IScore{
     }
     estValide(): boolean {
         return this.set1.estValide() && this.set2.estValide()
-            && (this.set3 == undefined ||  this.set3.estValide());
+            && (this.set3 == undefined ||  this.set3.estValide())
+            && this.leNombreDeSetGagnantEstDe(2);
+    }
+
+    private leNombreDeSetGagnantEstDe(nbreSetsGagnants:number):boolean{
+        let joueurAGagneLePremierSet = this.set1.resultat() > 0;
+        let joueurAGagneLeSecondSet = this.set2.resultat() > 0;
+        let leNombreDeSetGagnant = 0;
+        if (this.set3 == undefined)
+        {
+            if (joueurAGagneLePremierSet && joueurAGagneLeSecondSet ||
+                !joueurAGagneLePremierSet && !joueurAGagneLeSecondSet)
+            {
+                leNombreDeSetGagnant = 2;
+            }
+        }
+        else
+        {
+            let joueurAGagneLeTroisiemeSet = this.set3.resultat() > 0;
+            let nombreDeSetGagneParLeJoueurA = [ joueurAGagneLePremierSet, joueurAGagneLeSecondSet, joueurAGagneLeTroisiemeSet];
+            leNombreDeSetGagnant = Math.max(
+                nombreDeSetGagneParLeJoueurA.filter(element => element).length,
+                nombreDeSetGagneParLeJoueurA.filter(element => !element).length);
+        }
+        
+        return leNombreDeSetGagnant == nbreSetsGagnants;
     }
 }
