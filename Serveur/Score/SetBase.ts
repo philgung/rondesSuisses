@@ -13,6 +13,7 @@ export abstract class SetBase implements ISet{
     protected abstract readonly NombreDePointsMax;
     protected abstract readonly NombreDePointsPourGagnerUnSet;
     estValide(): boolean {
+        // Au dela de 10 points
         if (this.set.valeurA >= this.NombreDePointsPourGagnerUnSet - 1 &&
             this.set.valeurB >= this.NombreDePointsPourGagnerUnSet - 1) {
             if (this.set.valeurA > this.NombreDePointsMax ||
@@ -29,6 +30,8 @@ export abstract class SetBase implements ISet{
             }
             return Math.abs(this.set.valeurA - this.set.valeurB) == 2;
         }
+
+        // En dessous ou égal à 11 points
         if (this.set.valeurA == this.NombreDePointsPourGagnerUnSet ||
             this.set.valeurB == this.NombreDePointsPourGagnerUnSet) {
             return true;

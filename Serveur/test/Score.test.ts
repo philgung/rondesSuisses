@@ -1,8 +1,3 @@
-// Définir un scoring
-// 1 set gagnant de 11 points
-// 2 sets gagnants de 11 points
-// 2 sets gagnants de 21 points
-
 import { ScoreUnSetDe11 } from "../Score/ScoreUnSetDe11";
 import { ScoreUnSetDe21 } from "../Score/ScoreUnSetDe21";
 import { ScoreDeuxSetsGagnantsDe11 } from "../Score/ScoreDeuxSetsGagnantsDe11";
