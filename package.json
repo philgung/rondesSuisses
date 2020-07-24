@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.5",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@types/react": "^16.9.43",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "eslint": "^6.8.0",
     "jest": "^25.5.4",
     "nodemon": "^2.0.3",
@@ -18,9 +23,11 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "test":"jest ",
+    "test": "jest ",
     "test:watch": "jest --watchAll",
-    "start:dev": "nodemon --watch"
+    "start:dev": "nodemon --watch",
+    "build": "next build",
+    "start:next": "next start"
   },
   "repository": {
     "type": "git",
