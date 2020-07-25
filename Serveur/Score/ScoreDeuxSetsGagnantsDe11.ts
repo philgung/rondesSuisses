@@ -4,6 +4,7 @@ import { SetDe11Points } from "./SetDe11Points";
 export class ScoreDeuxSetsGagnantsDe11 implements IScore{
     private readonly set1: SetDe11Points;
     private readonly set2: SetDe11Points;
+    //@ts-ignore
     private readonly set3: SetDe11Points;
 
     constructor(set1A: number, set1B: number,

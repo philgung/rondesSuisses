@@ -6,8 +6,8 @@ type Set = {valeurA:number, valeurB:number}
 
 export abstract class SetBase implements ISet{
     private readonly set:Set;
-    protected abstract readonly NombreDePointsMax;
-    protected abstract readonly NombreDePointsPourGagnerUnSet;
+    protected abstract readonly NombreDePointsMax :number;
+    protected abstract readonly NombreDePointsPourGagnerUnSet :number;
 
     constructor(set : {valeurA: number, valeurB: number}) {
         this.set = set;
