@@ -16,18 +16,28 @@
     "@typescript-eslint/parser": "^2.31.0",
     "eslint": "^6.8.0",
     "jest": "^25.5.4",
-    "nodemon": "^2.0.3",
+    "pkg": "4.4.9",
     "rimraf": "^3.0.2",
     "ts-jest": "^25.4.0",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },
+  "bin": "server.js",
+  "pkg": {
+    "assets": [
+      ".next/**/*"
+    ],
+    "scripts": [
+      ".next/dist/**/*.js"
+    ]
+  },
   "scripts": {
-    "test": "jest ",
+    "test": "jest",
     "test:watch": "jest --watchAll",
-    "start:dev": "nodemon --watch",
     "build": "next build",
-    "start:next": "next start"
+    "start": "node server.js",
+    "dist:macos": "npm run build && pkg . -t node12-macos-x64 --out-path dist",
+    "dist:win": "npm run build && pkg . -t node12-win-x64 --out-path dist"
   },
   "repository": {
     "type": "git",
