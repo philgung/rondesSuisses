@@ -1,6 +1,10 @@
 import React from "react";
 import { AffecteTerrain } from "./AffecteTerrain";
+import { Button } from '@rmwc/button';
+import { TextField} from '@rmwc/textfield';
 
+// Hook ?? plutot que classe composant
+// https://rmwc.io/
 export class SaisieScore extends React.Component {   
     render(){
         const match = 
@@ -39,9 +43,9 @@ export class SaisieScore extends React.Component {
                 <AffecteTerrain />
             </div>
             <div style={{display: 'inline-block', margin: '0 0 0 5px'}}>
-                <button>Annuler le résultat du match</button>
-                <button>Abandonner les modifications</button>
-                <button>Enregistrer les modifications</button>
+                <Button raised label="Annuler le résultat du match"/>
+                <Button label="Abandonner les modifications" />
+                <Button raised label="Enregistrer les modifications" />
             </div>
         </div>);
     }
@@ -52,31 +56,15 @@ function Bloc(props: { valeur: React.ReactNode; }){
 }
 
 class SaisieSet extends React.Component{
-    texteSaisi(evenement: React.ChangeEvent<HTMLInputElement>){
-        const texteSaisi = (evenement.target as any).value;
-        // if (texteSaisi.length == 2){
-        //     document.querySelector('input[name=setB').focus();
-        // }
-        // console.log(texteSaisi);
-
-        if (texteSaisi === '' || /^[0-9\b]+$/.test(texteSaisi)){
-            // Number
-
-        }
-    }
     render(){
         return (
             <div style={{display: 'inline-block', margin: '0 0 0 5px'}}>
-                <input type="text" name="setA"
-                    minLength={2} maxLength={2} size={2} 
-                    pattern="[0-9]*"
+                <TextField type="number" name="setA"
                     style={{margin: '0 0 0 5px'}}
-                    onChange={this.texteSaisi}/> 
-                <input type="text" name="setB"
-                    minLength={2} maxLength={2} size={2} 
-                    pattern="[0-9]*"
-                    style={{margin: '0 0 0 5px'}}
-                    onChange={this.texteSaisi}/>
+                    min="0" max="30"/> 
+                <TextField type="number" name="setB"
+                    min="0" max="30"
+                    style={{margin: '0 0 0 5px'}}/>
             </div>
         );
     }
@@ -90,8 +78,7 @@ class Heure extends React.Component{
     }
     render(){
         return (
-            <input type="text" maxLength={5} size={5} pattern={this._modeleHeure}/>
+            <TextField type="time" maxLength={5} size={5} pattern={this._modeleHeure}/>
         );
-        //  value={this.state.valeur}
     }
 }

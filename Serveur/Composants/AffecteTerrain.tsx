@@ -1,15 +1,10 @@
 import React from "react";
+import {Select} from '@rmwc/select';
+
 export class AffecteTerrain extends React.Component {
     render() {
         return (
-            <select>
-                <option value=""></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+            <Select label="Terrain" outlined options={["1", "2", "3", "4", "5"]} />
         );
     }
 }
