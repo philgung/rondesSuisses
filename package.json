@@ -22,7 +22,7 @@
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },
-  "bin": "server.js",
+  "bin": "serveur.js",
   "pkg": {
     "assets": [
       ".next/**/*"
@@ -35,7 +35,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "build": "next build",
-    "start": "node server.js",
+    "start": "node serveur.js",
     "dist:macos": "npm run build && pkg . -t node12-macos-x64 --out-path dist",
     "dist:win": "npm run build && pkg . -t node12-win-x64 --out-path dist"
   },
